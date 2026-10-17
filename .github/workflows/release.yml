@@ -130,7 +130,7 @@ jobs:
         run: python3 scripts/release-notes.py "$TAG" > dist/RELEASE_NOTES.md
 
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: 'dist/*.apk'
 
