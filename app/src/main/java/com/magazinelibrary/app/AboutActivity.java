@@ -228,7 +228,7 @@ public class AboutActivity extends Activity {
                     updateStatus.setText(R.string.about_update_failed);
                     return;
                 }
-                if (isNewer(latest, BuildConfig.VERSION_NAME)) {
+                if (Versions.isNewer(latest, BuildConfig.VERSION_NAME)) {
                     new AlertDialog.Builder(this)
                             .setTitle(getString(R.string.about_update_available, latest))
                             .setPositiveButton(R.string.about_open_release, (d, w) -> open(target))
@@ -242,22 +242,4 @@ public class AboutActivity extends Activity {
         }, "update-check").start();
     }
 
-    static boolean isNewer(String latest, String current) {
-        String[] a = latest.replaceFirst("^[vV]", "").split("[.+-]");
-        String[] b = current.replaceFirst("^[vV]", "").split("[.+-]");
-        for (int n = 0; n < Math.max(a.length, b.length); n++) {
-            int left = n < a.length ? number(a[n]) : 0;
-            int right = n < b.length ? number(b[n]) : 0;
-            if (left != right) return left > right;
-        }
-        return false;
-    }
-
-    private static int number(String value) {
-        try {
-            return Integer.parseInt(value.replaceAll("\\D.*$", ""));
-        } catch (Exception e) {
-            return 0;
-        }
-    }
 }
