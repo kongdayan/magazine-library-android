@@ -1,16 +1,125 @@
 plugins { id 'com.android.application' }
+
+// Version -------------------------------------------------------------------------------------
+// CI passes -PversionName from the release tag. The version code is derived from it so that
+// 1.4.0 -> 10400 and every published build stays installable over the previous one.
+def configuredVersion = (project.findProperty('versionName') ?: '1.4.0').toString()
+def versionCodeFromName = { String name ->
+    def matcher = (name =~ /^(\d+)\.(\d+)(?:\.(\d+))?/)
+    if (!matcher.find()) return 1
+    return matcher.group(1).toInteger() * 10000 + matcher.group(2).toInteger() * 100
+            + (matcher.group(3) ?: '0').toInteger()
+}
+def configuredCode = (project.findProperty('versionCode') ?: versionCodeFromName(configuredVersion)) as int
+
+def gitCommit = 'unknown'
+try {
+    def process = new ProcessBuilder('git', 'rev-parse', '--short=7', 'HEAD')
+            .directory(rootProject.projectDir).redirectErrorStream(true).start()
+    gitCommit = process.inputStream.text.trim()
+    process.waitFor()
+} catch (Exception ignored) {
+}
+def buildTime = new Date().format("yyyy-MM-dd HH:mm 'UTC'", TimeZone.getTimeZone('UTC'))
+
+// Signing -------------------------------------------------------------------------------------
+// The repository ships a public community key so sideload builds can always upgrade each
+// other. Environment variables take precedence, which lets a fork or a private CI use its own
+// key without editing tracked files.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('signing/keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+def signingStore = System.getenv('SIGNING_STORE_FILE') ?: keystoreProperties.getProperty('storeFile')
+def signingStorePassword = System.getenv('SIGNING_STORE_PASSWORD') ?: keystoreProperties.getProperty('storePassword')
+def signingKeyAlias = System.getenv('SIGNING_KEY_ALIAS') ?: keystoreProperties.getProperty('keyAlias')
+def signingKeyPassword = System.getenv('SIGNING_KEY_PASSWORD') ?: keystoreProperties.getProperty('keyPassword')
+
 android {
     namespace 'com.magazinelibrary.app'
     compileSdk 36
+
     defaultConfig {
         applicationId 'com.magazinelibrary.app'
         minSdk 29
         targetSdk 35
-        versionCode 5
-        versionName '1.3.0'
+        versionCode configuredCode
+        versionName configuredVersion
         testInstrumentationRunner 'com.magazinelibrary.app.DeviceTestRunner'
+        vectorDrawables.useSupportLibrary = false
+        buildConfigField 'String', 'REPO_URL', '"https://github.com/kongdayan/magazine-library-android"'
+        buildConfigField 'String', 'GIT_COMMIT', '"' + gitCommit + '"'
+        buildConfigField 'String', 'BUILD_TIME', '"' + buildTime + '"'
     }
-    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
-    buildTypes { release { minifyEnabled false; signingConfig signingConfigs.debug } }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    signingConfigs {
+        release {
+            if (signingStore) {
+                storeFile file(signingStore)
+                storePassword signingStorePassword
+                keyAlias signingKeyAlias
+                keyPassword signingKeyPassword
+            }
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix '-debug'
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Per-device artifacts. The app itself uses only the platform WebView and PdfRenderer, so
+    // every variant installs on every supported device; the ABI names keep release downloads
+    // predictable for users and MDM catalogs that expect them.
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'arm64-v8a', 'armeabi-v7a', 'x86_64'
+            universalApk true
+        }
+    }
+
+    lint {
+        abortOnError true
+        checkReleaseBuilds true
+        // targetSdk stays at 35 until edge-to-edge on Android 16 is verified on a device.
+        disable 'OldTargetApi'
+        // adaptive-icon resources must live in an API-qualified folder even though minSdk is 29.
+        disable 'ObsoleteSdkInt'
+    }
+
+    // Per-app language switching is a first-class feature, not an on-demand bundle split.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/*.kotlin_module', 'META-INF/*.version']
+        }
+    }
 }
-dependencies { testImplementation 'junit:junit:4.13.2' }
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}

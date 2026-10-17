@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Magazine Library icon">
+  <rect width="512" height="512" rx="112" fill="#14675D"/>
+  <path d="M128 166 L251 190 L251 389 L128 365 Z" fill="#F7F5EE"/>
+  <path d="M261 190 L384 166 L384 365 L261 389 Z" fill="#F7F5EE"/>
+  <path d="M318 175 L361 168 L361 261 L339 239 L318 256 Z" fill="#EAB68A"/>
+  <g fill="#14675D">
+    <path d="M152 232 L223 244 L223 256 L152 244 Z"/>
+    <path d="M152 270 L223 282 L223 294 L152 282 Z"/>
+    <path d="M152 308 L209 318 L209 330 L152 320 Z"/>
+    <path d="M289 244 L360 232 L360 244 L289 256 Z"/>
+    <path d="M289 282 L360 270 L360 282 L289 294 Z"/>
+  </g>
+</svg>

@@ -1,55 +1,152 @@
-# Magazine Library for Android
+<div align="center">
+<img src="docs/images/icon.svg" width="88" alt="Magazine Library" />
 
-MagazineLib 的独立 Android 浏览、下载和离线阅读工具。工程目录是 `magzinelib-apk`，应用名称是 **Magazine Library**，包名 `com.magazinelibrary.app`。
+# Magazine Library
 
-当前交付：[MagazineLibrary-1.3.0.apk](dist/MagazineLibrary-1.3.0.apk)，versionCode 5。沿用原签名，可直接覆盖升级。
+Magazines arrive as PDFs. Your phone should let you read them offline.
 
-## 使用
+[![CI](https://github.com/kongdayan/magazine-library-android/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kongdayan/magazine-library-android/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/kongdayan/magazine-library-android)](https://github.com/kongdayan/magazine-library-android/releases/latest)
+[![MIT](https://img.shields.io/badge/license-MIT-14675d)](LICENSE)
+[![Android](https://img.shields.io/badge/Android-10%2B-1d2628?logo=android)](https://github.com/kongdayan/magazine-library-android/releases/latest)
+[![Languages](https://img.shields.io/badge/UI-5%20languages-eab68a)](docs/ARCHITECTURE.md#localization)
 
-底部固定四个页面：**发现、书库、下载、设置**。
+[English](README.md) · [简体中文](README.cn.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Русский](README.ru.md)
 
-- 发现页使用 Java 原生界面：关键词搜索、分类、发布月份、封面卡片、详情、同系列查询、本页排序和固定翻页控件。只有用户搜索、筛选、打开详情或翻页时，才请求对应页面；不遍历全站。
-- WebView 负责加载当前请求的网页响应、网站脚本和会话。应用从当前响应形成的 DOM 提取杂志字段，用原生组件展示；封面也通过同一个浏览器加载，不另建 HTTP 会话。
-- 右上角「网页」进入浏览器，「返回原生」切回原生界面。遇到明确验证页时显示网页，让用户完成验证；在书库或下载页时不会被后台验证强制切走。
-- 普通 VK 跳转等待自动转到文件，停在预览页时可点击网页下载按钮。明确要求验证时由用户在网页内完成。
-- 书库支持封面网格与列表，页面右侧的展示切换只改变展示方式。杂志菜单可重命名、调整分类、查找同系列、删除文件，或仅移出书库。
-- 下载任务默认是一行标题和状态，点击行查看大小、下载地址、实际文件地址、保存位置和错误说明。⋮ 菜单提供继续、暂停、打开原页面及删除或移除等操作。上方保存位置可点击选择目录。「清空记录」点一次清理已完成和失败的记录，保留 PDF、书库及未完成任务；清空后重启也不会重新显示。
-- 设置是最右侧独立页面，集中管理下载目录、任务大小与完成记录显示、书库布局与列数、分组、封面、紧凑程度、排序、默认阅读模式、网页字号、加载进度和启动页面。
-- 阅读支持单页翻阅和连续滚动，两种方式均可点击页码跳转、双指缩放并自动保存进度。
+</div>
 
-1.2 移除了 PDF 导入入口。已有 PDF、目录授权、分类与阅读进度保留。
+**A small, local Android client for browsing a magazine site, downloading PDFs and reading them
+offline.**
 
-PDF 命名采用选中 PDF 链接的文字，跳转后继续沿用。原生详情按钮沿用当前网页的文件准备请求，在同一个浏览器会话中建立下载凭据，准备就绪后接管后台传输。原始链接用于识别已有下载，文件跳转后的地址变化不会造成重复添加。新选择的杂志不会被旧等待任务接走。
+I wanted to stop juggling browser tabs, a download folder and a separate PDF viewer just to read
+one issue on a train. Magazine Library keeps the site session in a WebView, turns the page you
+asked for into native controls, downloads in the background and opens the result in a reader
+with saved progress. No account, no ads, no analytics, no cloud.
 
-下载支持暂停、重试与条件续传：服务器须提供 ETag / Last-Modified 并接受有效 Range，否则重新下载。关闭界面后前台服务可继续；系统强制停止后重新打开可在任务菜单继续。
+- **Discover without the web clutter.** Search, categories, publication month, covers, details,
+  same-series lookup, per-page sorting and pagination, all rendered with native views. Only the
+  page you open is requested.
+- **Downloads that survive the site.** The downloader keeps the browser session per host,
+  follows the site's file-preparation step, resumes when the server allows it and validates the
+  PDF before saving it to Downloads or a folder you choose.
+- **A library, not a folder.** Covers, grid or list, grouping by magazine, rename, sort and
+  reading progress. Files stay where you put them.
+- **Read properly.** Single-page swiping or continuous scrolling, pinch zoom, page jump and a
+  reading position that survives restarts.
+- **Five languages, one small APK.** English, Simplified Chinese, Japanese, Korean and Russian,
+  switchable in Settings or through Android's per-app language picker. No AndroidX, no runtime
+  libraries, no ads.
 
-## 构建
+<div align="center">
+  <img src="docs/images/discover.jpg" width="250" alt="Discover with search results" />
+  <img src="docs/images/detail.jpg" width="250" alt="Magazine details and PDF links" />
+  <img src="docs/images/settings.jpg" width="250" alt="Settings" />
+  <br />
+  <img src="docs/images/about.jpg" width="250" alt="About and author" />
+  <img src="docs/images/language.jpg" width="250" alt="Language picker" />
+</div>
 
-需要 JDK 17、Android SDK 36、Build Tools 35.0.0 和 Gradle 8.11.1。最低 Android 10（API 29）。
+Captured on an Android 15 emulator during the 1.4 verification run. The UI is available in
+English, Simplified Chinese, Japanese, Korean and Russian. See
+[verification scope](docs/VERIFICATION.md).
+
+## Install
+
+Android 10 (API 29) or newer.
+
+| Device | Download |
+| --- | --- |
+| Any supported device (**recommended**) | [MagazineLibrary-universal.apk](https://github.com/kongdayan/magazine-library-android/releases/latest/download/MagazineLibrary-universal.apk) |
+| arm64-v8a | [MagazineLibrary-arm64-v8a.apk](https://github.com/kongdayan/magazine-library-android/releases/latest/download/MagazineLibrary-arm64-v8a.apk) |
+| armeabi-v7a | [MagazineLibrary-armeabi-v7a.apk](https://github.com/kongdayan/magazine-library-android/releases/latest/download/MagazineLibrary-armeabi-v7a.apk) |
+| x86_64 (emulators) | [MagazineLibrary-x86_64.apk](https://github.com/kongdayan/magazine-library-android/releases/latest/download/MagazineLibrary-x86_64.apk) |
+
+The app contains no native libraries, so every APK runs on every supported device; the
+universal build is the simplest choice. Releases are signed with the public
+[community key](signing/keystore.properties), so each one upgrades the previous sideload
+install. Check a download against `SHA256SUMS` on the release page. Not distributed through
+Google Play.
+
+## Use it
+
+1. Open **Discover**, search or pick a category and month, then open a magazine.
+2. Tap a PDF entry. The site may prepare the file for a moment; the download continues in the
+   background and appears in **Downloads**.
+3. The finished file lands in `Downloads/Magazine Library` or the folder you select, and the
+   issue appears in **Library**.
+4. Tap a cover to read. Swipe horizontally in single-page mode, scroll in continuous mode, tap
+   the page number to jump. The last page is remembered.
+
+If a site verification page appears, finish it inside the app's **Website** view; it is a
+manual step by design. When the site changes its markup, the Website view remains a working
+fallback while the native extractor is updated.
+
+## How it works
+
+The system WebView is the browser session. After a page the user requested finishes loading, a
+read-only script extracts the current magazine response into JSON, and native views render it.
+Nothing crawls or pre-fetches the site. Covers use the same session. The downloader reads
+cookies for the exact URL, handles redirects itself, resumes with `Range` when possible, and
+only publishes a file after `%PDF-` and `PdfRenderer` validation.
+
+More detail: [architecture](docs/ARCHITECTURE.md) · [privacy](PRIVACY.md) ·
+[security policy](SECURITY.md).
+
+## Build
+
+Requirements: JDK 17, Android SDK platform 36, Build Tools 35.0.0. Gradle 8.11.1 comes from the
+wrapper.
 
 ```sh
-./gradlew :app:assembleRelease :app:testDebugUnitTest :app:lintDebug
+./gradlew :app:assembleRelease
+./gradlew :app:testDebugUnitTest :app:lintDebug
+python3 scripts/check-translations.py
 ```
 
-在 `local.properties` 指定 `sdk.dir`。本机已复用相邻 `andi-proxy/.tools` 中的 SDK、Gradle 和缓存；未改动 Andi Proxy 的源码或网络配置。
+Release builds are signed with the community key so sideload installs keep upgrading. Set the
+`SIGNING_*` environment variables to use your own key. [Building notes](docs/BUILDING.md) ·
+[release process](docs/RELEASING.md).
 
-交付版本为 release 构建，使用本机现有调试证书签名以便保留此次设备安装的数据并继续升级；适合本次侧载测试。应用商店发布应配置专用签名证书。测试代码与测试 TLS 证书只存在于独立测试 APK，不包含在交付 APK。
+## Languages
 
-## 实现
+| Language | App UI | README |
+| --- | --- | --- |
+| English (default) | `values/` | this file |
+| 简体中文 | `values-zh-rCN/` | [README.cn.md](README.cn.md) |
+| 日本語 | `values-ja/` | [README.ja.md](README.ja.md) |
+| 한국어 | `values-ko/` | [README.ko.md](README.ko.md) |
+| Русский | `values-ru/` | [README.ru.md](README.ru.md) |
 
-- 系统 WebView 保持其默认 User-Agent、JavaScript、DOM storage 与 Cookie。普通用户在网页内完成验证，应用不自动解 CAPTCHA。
-- 原生下载器按每个跳转的域名读取 WebView Cookie，并处理服务器 Set-Cookie；不把一个站点的 Cookie 发送给另一个站点。
-- 会话保存在本机 WebView 数据区，不上传或输出 Cookie。网页和下载保持同一 User-Agent。系统浏览器与本应用 Cookie 独立。
-- 原生发现页仅缓存最近 8 个用户访问的响应，封面内存缓存上限 8 MB；月份来自页面归档或当前结果，也可以手动指定。分类、搜索和发布月份由服务器筛选，排序只作用于本页。
-- SQLite 持久化任务、分类、保存位置和阅读进度；不在任务数据库保存 Cookie。备份和设备迁移排除应用内部数据。
-- 下载暂存在应用私有目录，完成后校验 `%PDF-` 和 PdfRenderer 可读性，再发布到 MediaStore Downloads 或 SAF 文件夹。
-- PdfRenderer 在单线程中按页渲染。连续模式只缓存可见页面和相邻页面，最多 8 页 / 24 MB 图片；单页模式独立渲染，切换时释放另一模式的缓存。封面缓存可由系统清理。
-- 不申请广泛存储权限，不使用 JavaScript 原生桥，不加载不可信本地文件，不忽略 TLS 证书错误。
+Translations are checked in CI: keys, placeholders and untranslatable strings must match the
+English source. New languages are welcome — see [contributing](CONTRIBUTING.md#translation-rules).
 
-## 验证与范围
+## Project
 
-查看 [1.3 原生发现页验证](docs/VERIFICATION-1.3.md)、[1.2.1 清空记录验证](docs/VERIFICATION-1.2.1.md)、[1.2 设备验证记录](docs/VERIFICATION-1.2.md)、[1.1 历史记录](docs/VERIFICATION-1.1.md)、[1.0 历史记录](docs/VERIFICATION.md) 和 `verification/` 中的 JSON、界面图。
+- [Changelog](CHANGELOG.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Building](docs/BUILDING.md) · [Releasing](docs/RELEASING.md)
+- [Verification scope](docs/VERIFICATION.md) · [historical device logs](docs/verification/)
+- [Privacy](PRIVACY.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
-验证会话可过期，也可能随 IP、浏览器状态和站点规则改变；出现验证页时回应用内网页完成后继续。[Cloudflare 移动 WebView 配置](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/) 说明了所需浏览能力。
+## Author
 
-网站结构变化时可能暂时无法提取字段，可通过「网页」继续访问。当前阅读器支持普通可解析 PDF；带密码或损坏的 PDF 会给出错误。不支持网页 `blob:` 下载、批量抓取、OCR 或全文检索。系列归类使用刊名前缀与日期/期号规则，可手动纠正。
+**kongdayan · @kongdayan** — independent developer in Shanghai.
+
+I build small tools that respect privacy and work offline. Magazine Library is one of them;
+[WristBeam](https://github.com/kongdayan/wristbeam) (腕映) is a native macOS companion for Garmin
+watches.
+
+[GitHub](https://github.com/kongdayan) · [Email](mailto:19552144+kongdayan@users.noreply.github.com) ·
+[Issues](https://github.com/kongdayan/magazine-library-android/issues)
+
+## Disclaimer
+
+Magazine Library is an independent, unofficial client for `magazinelib.com` and is not
+affiliated with that site. It is a browser and download manager; it does not host or index
+content. Downloads are subject to the source site's terms and to copyright law. Use it only for
+material you may legally access. The author is not responsible for how third-party content is
+used.
+
+## License
+
+[MIT](LICENSE) © 2026 kongdayan and contributors.

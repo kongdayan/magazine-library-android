@@ -1,0 +1,36 @@
+name: Translation
+description: Add a language or improve an existing translation
+title: "[Translation] "
+labels: [translation]
+body:
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      placeholder: Italian (it)
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of contribution
+      options:
+        - New language
+        - Fix an existing translation
+        - Review wording or placeholders
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Mention anything ambiguous, plus the output of the translation check.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I kept every `%1$s` / `%2$d` placeholder and left `translatable="false"` strings out.
+          required: true
+        - label: I ran `python3 scripts/check-translations.py`.
+          required: true
