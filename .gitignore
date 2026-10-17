@@ -1,0 +1,31 @@
+# Gradle
+.gradle/
+build/
+**/build/
+gradle-app.setting
+
+# Local machine configuration
+local.properties
+.gradle-home/
+.tools/
+.idea/
+*.iml
+.DS_Store
+
+# Build and release outputs
+dist/
+outputs/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Local verification captures (curated images live in docs/images)
+verification/
+captures/
+
+# Signing keys: only the public community key used for sideload releases is tracked.
+*.jks
+*.keystore
+!signing/community.jks

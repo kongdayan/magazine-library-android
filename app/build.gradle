@@ -1,0 +1,16 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.magazinelibrary.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'com.magazinelibrary.app'
+        minSdk 29
+        targetSdk 35
+        versionCode 5
+        versionName '1.3.0'
+        testInstrumentationRunner 'com.magazinelibrary.app.DeviceTestRunner'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    buildTypes { release { minifyEnabled false; signingConfig signingConfigs.debug } }
+}
+dependencies { testImplementation 'junit:junit:4.13.2' }
