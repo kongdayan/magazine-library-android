@@ -3,6 +3,13 @@
 This page records what has actually been checked and what remains unverified. The project
 publishes APKs for sideloading; it does not claim store-level certification.
 
+## 1.4.1
+
+- Fixes the update checker JSON parsing bug found in 1.4.0; `/releases/latest` was confirmed to
+  return `v1.4.0` and `VersionsTest` covers the comparison.
+- `:app:testDebugUnitTest` (14 tests), `:app:lintDebug` (0 issues), the translation check and
+  the signed release build pass in GitHub Actions.
+
 ## 1.4.0
 
 Checked locally with JDK 17, Android SDK 36 and Build Tools 35.0.0:

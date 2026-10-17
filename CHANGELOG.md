@@ -4,6 +4,18 @@ All notable changes to Magazine Library are documented here. The app follows sem
 versioning: `MAJOR.MINOR.PATCH`, with the Android `versionCode` derived as
 `major * 10000 + minor * 100 + patch` (so 1.4.0 is 10400).
 
+## 1.4.1 — 2026-10-18
+
+### Fixed
+
+- **Update checker.** 1.4.0 parsed the GitHub release response with the wrong JSON API, so
+  *Check for updates* always failed. It now reads the release object directly. Version
+  comparison moved into a small helper with unit tests for patch, minor and pre-release tags.
+
+### Changed
+
+- CI uses current action versions and Gradle 8.14.6.
+
 ## 1.4.0 — 2026-10-18
 
 The first public, open-source release.

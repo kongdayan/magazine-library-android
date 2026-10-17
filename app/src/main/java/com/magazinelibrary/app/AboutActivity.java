@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -206,7 +205,7 @@ public class AboutActivity extends Activity {
                             while ((n = in.read(buffer)) != -1) out.write(buffer, 0, n);
                             body = out.toString("UTF-8");
                         }
-                        JSONObject release = new JSONObject((String) new JSONTokener(body).nextValue());
+                        JSONObject release = new JSONObject(body);
                         tag = release.optString("tag_name", null);
                         page = release.optString("html_url", RELEASES_PAGE);
                     } else {

@@ -117,12 +117,29 @@ jobs:
           print((output / "SHA256SUMS").read_text())
           PY
 
-      - name: Verify release signing
+      - name: Verify release signing and version
+        env:
+          VERSION: ${{ steps.tag.outputs.version }}
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs \
             dist/MagazineLibrary-universal.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt2" dump badging \
-            dist/MagazineLibrary-universal.apk | grep -E 'package:|sdkVersion|targetSdkVersion'
+          BADGING=$("$ANDROID_HOME/build-tools/35.0.0/aapt2" dump badging \
+            dist/MagazineLibrary-universal.apk | head -n 1)
+          echo "$BADGING"
+          python3 - "$VERSION" "$BADGING" <<'PY'
+          import re, sys
+          version, badging = sys.argv[1], sys.argv[2]
+          name = re.search(r"versionName='([^']+)'", badging).group(1)
+          code = int(re.search(r"versionCode='(\d+)'", badging).group(1))
+          parts = [int(x) for x in re.findall(r"\d+", version)[:3]]
+          expected = parts[0] * 10000 + (parts[1] if len(parts) > 1 else 0) * 100 \
+              + (parts[2] if len(parts) > 2 else 0)
+          if name != version:
+              raise SystemExit(f"versionName {name} does not match tag {version}")
+          if code != expected:
+              raise SystemExit(f"versionCode {code} does not match expected {expected}")
+          print(f"version {name} ({code}) matches the tag")
+          PY
 
       - name: Write release notes
         env:
