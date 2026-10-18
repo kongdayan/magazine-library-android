@@ -10,8 +10,7 @@ versioning: `MAJOR.MINOR.PATCH`, with the Android `versionCode` derived as
 
 - Author information now uses only the GitHub account **@kongdayan**. The About screen, the
   READMEs and the security policy no longer contain a personal name or email address.
-- The About screenshot was removed pending a clean capture; the author card still shows the
-  account handle.
+- The About screenshot was recaptured from the account-only build.
 
 ## 1.4.1 — 2026-10-18
 
