@@ -30,7 +30,6 @@
   <img src="docs/images/detail.jpg" width="250" alt="잡지 상세 정보와 PDF 링크" />
   <img src="docs/images/settings.jpg" width="250" alt="설정" />
   <br />
-  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 
@@ -98,11 +97,11 @@ python3 scripts/check-translations.py
 
 ## 작성자
 
-**kongdayan · @kongdayan** — 상하이에서 활동하는 독립 개발자입니다.
+**kongdayan** — 독립 개발자입니다.
 
 프라이버시를 존중하고 오프라인에서도 동작하는 작은 도구를 만듭니다. Magazine Library도 그중 하나이며, [WristBeam](https://github.com/kongdayan/wristbeam)(腕映)은 Garmin 워치를 위한 네이티브 macOS 컴패니언 앱입니다.
 
-[GitHub](https://github.com/kongdayan) · [이메일](mailto:19552144+kongdayan@users.noreply.github.com) · [이슈](https://github.com/kongdayan/magazine-library-android/issues)
+[GitHub](https://github.com/kongdayan) · [이슈](https://github.com/kongdayan/magazine-library-android/issues)
 
 ## 고지
 

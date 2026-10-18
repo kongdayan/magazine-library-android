@@ -84,7 +84,7 @@ public class AboutActivity extends Activity {
         LinearLayout author = Ui.row(this);
         author.setBackground(Ui.bg(Ui.WHITE, Ui.dp(this, 14)));
         Ui.pad(author, 14, 14);
-        TextView monogram = Ui.heading(this, "孔", 24);
+        TextView monogram = Ui.heading(this, "@", 24);
         monogram.setGravity(Gravity.CENTER);
         monogram.setTextColor(Ui.WHITE);
         monogram.setBackground(Ui.bg(Ui.GREEN, Ui.dp(this, 28)));
@@ -102,8 +102,6 @@ public class AboutActivity extends Activity {
         Ui.space(body, 8);
         link(body, getString(R.string.about_github_profile), "github.com/kongdayan",
                 "https://github.com/kongdayan");
-        link(body, getString(R.string.about_email), "19552144+kongdayan@users.noreply.github.com",
-                "mailto:19552144+kongdayan@users.noreply.github.com");
 
         section(body, getString(R.string.about_project));
         link(body, getString(R.string.about_source),

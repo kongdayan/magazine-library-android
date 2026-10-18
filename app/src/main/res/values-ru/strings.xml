@@ -253,15 +253,14 @@
     <string name="about_title">О приложении</string>
     <string name="about_version">Версия %1$s · сборка %2$d</string>
     <string name="about_author_section">Автор</string>
-    <string name="about_author_name">@kongdayan · @kongdayan</string>
-    <string name="about_author_role">Независимый разработчик · Шанхай</string>
+    <string name="about_author_name">@kongdayan</string>
+    <string name="about_author_role">Независимый разработчик</string>
     <string name="about_author_bio">Я делаю небольшие инструменты, которые уважают приватность и работают офлайн. Magazine Library — один из них.</string>
     <string name="about_project">Проект</string>
     <string name="about_github_profile">Профиль GitHub</string>
     <string name="about_source">Исходный код</string>
     <string name="about_releases">Релизы</string>
     <string name="about_issues">Сообщить о проблеме</string>
-    <string name="about_email">Эл. почта</string>
     <string name="about_license">Лицензия MIT</string>
     <string name="about_wristbeam">Другой проект · WristBeam</string>
     <string name="about_languages">Языки</string>
@@ -278,7 +277,7 @@
     <string name="about_update_failed">Не удалось проверить обновления. Повторите позже.</string>
     <string name="about_open_release">Открыть релиз</string>
     <string name="about_build">Сборка %1$s · %2$s</string>
-    <string name="about_made_by">Сделано kongdayan</string>
+    <string name="about_made_by">Сделано @kongdayan</string>
     <string name="about_contribute">Будем рады вашему коду и переводам на GitHub.</string>
 
     <!-- Language names (shown in their own language) -->

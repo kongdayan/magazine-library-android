@@ -30,7 +30,6 @@
   <img src="docs/images/detail.jpg" width="250" alt="杂志详情与 PDF 链接" />
   <img src="docs/images/settings.jpg" width="250" alt="设置" />
   <br />
-  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 
@@ -98,11 +97,11 @@ CI 会检查翻译：键、占位符和不可翻译字符串必须与英文源�
 
 ## 作者
 
-**@kongdayan · kongdayan** —— 独立开发者，上海。
+**kongdayan** —— 独立开发者。
 
 我做一些尊重隐私、可以离线使用的小工具，Magazine Library 是其中之一；[腕映 WristBeam](https://github.com/kongdayan/wristbeam) 是一个原生 macOS 佳明手表伴侣。
 
-[GitHub](https://github.com/kongdayan) · [邮件](mailto:19552144+kongdayan@users.noreply.github.com) · [问题反馈](https://github.com/kongdayan/magazine-library-android/issues)
+[GitHub](https://github.com/kongdayan) · [问题反馈](https://github.com/kongdayan/magazine-library-android/issues)
 
 ## 声明
 

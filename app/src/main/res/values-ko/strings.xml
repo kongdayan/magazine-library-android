@@ -253,15 +253,14 @@
     <string name="about_title">정보</string>
     <string name="about_version">버전 %1$s · 빌드 %2$d</string>
     <string name="about_author_section">작성자</string>
-    <string name="about_author_name">kongdayan · @kongdayan</string>
-    <string name="about_author_role">독립 개발자 · 상하이</string>
+    <string name="about_author_name">@kongdayan</string>
+    <string name="about_author_role">독립 개발자</string>
     <string name="about_author_bio">프라이버시를 존중하고 오프라인에서도 작동하는 작고 집중된 도구를 만듭니다. Magazine Library도 그중 하나입니다.</string>
     <string name="about_project">프로젝트</string>
     <string name="about_github_profile">GitHub 프로필</string>
     <string name="about_source">소스 코드</string>
     <string name="about_releases">릴리스</string>
     <string name="about_issues">문제 신고</string>
-    <string name="about_email">이메일</string>
     <string name="about_license">MIT 라이선스</string>
     <string name="about_wristbeam">다른 프로젝트 · WristBeam</string>
     <string name="about_languages">언어</string>
@@ -278,7 +277,7 @@
     <string name="about_update_failed">업데이트를 확인하지 못했습니다. 나중에 다시 시도하세요.</string>
     <string name="about_open_release">릴리스 열기</string>
     <string name="about_build">빌드 %1$s · %2$s</string>
-    <string name="about_made_by">kongdayan 제작</string>
+    <string name="about_made_by">@kongdayan 제작</string>
     <string name="about_contribute">GitHub에서 기여와 번역을 환영합니다.</string>
 
     <!-- Language names (shown in their own language) -->

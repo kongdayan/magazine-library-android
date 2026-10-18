@@ -253,15 +253,14 @@
     <string name="about_title">About</string>
     <string name="about_version">Version %1$s · build %2$d</string>
     <string name="about_author_section">Author</string>
-    <string name="about_author_name">kongdayan · @kongdayan</string>
-    <string name="about_author_role">Independent developer · Shanghai</string>
+    <string name="about_author_name">@kongdayan</string>
+    <string name="about_author_role">Independent developer</string>
     <string name="about_author_bio">I build small, focused tools that respect privacy and work offline. Magazine Library is one of them.</string>
     <string name="about_project">Project</string>
     <string name="about_github_profile">GitHub profile</string>
     <string name="about_source">Source code</string>
     <string name="about_releases">Releases</string>
     <string name="about_issues">Report an issue</string>
-    <string name="about_email">Email</string>
     <string name="about_license">MIT License</string>
     <string name="about_wristbeam">Another project · WristBeam</string>
     <string name="about_languages">Languages</string>
@@ -278,7 +277,7 @@
     <string name="about_update_failed">Could not check for updates. Try again later.</string>
     <string name="about_open_release">Open release</string>
     <string name="about_build">Build %1$s · %2$s</string>
-    <string name="about_made_by">Made by kongdayan</string>
+    <string name="about_made_by">Made by @kongdayan</string>
     <string name="about_contribute">Contributions and translations are welcome on GitHub.</string>
 
     <!-- Language names (shown in their own language) -->

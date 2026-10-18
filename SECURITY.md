@@ -8,9 +8,9 @@ publishing or the reader.
 
 Please do not open a public issue for a security problem. Use GitHub's private vulnerability
 reporting on
-[Security advisories](https://github.com/kongdayan/magazine-library-android/security/advisories/new)
-or email <19552144+kongdayan@users.noreply.github.com>. Include the app version, Android version, a description and
-steps to reproduce. You will get an acknowledgement as soon as possible.
+[Security advisories](https://github.com/kongdayan/magazine-library-android/security/advisories/new).
+Include the app version, Android version, a description and steps to reproduce. You will get an
+acknowledgement as soon as possible.
 
 ## Supported versions
 

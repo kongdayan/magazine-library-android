@@ -4,6 +4,15 @@ All notable changes to Magazine Library are documented here. The app follows sem
 versioning: `MAJOR.MINOR.PATCH`, with the Android `versionCode` derived as
 `major * 10000 + minor * 100 + patch` (so 1.4.0 is 10400).
 
+## 1.4.2 — 2026-10-18
+
+### Changed
+
+- Author information now uses only the GitHub account **@kongdayan**. The About screen, the
+  READMEs and the security policy no longer contain a personal name or email address.
+- The About screenshot was removed pending a clean capture; the author card still shows the
+  account handle.
+
 ## 1.4.1 — 2026-10-18
 
 ### Fixed
@@ -26,7 +35,7 @@ The first public, open-source release.
   Russian. Android 13+ uses the system per-app language picker; older versions get the same
   choice inside Settings → Language. All UI strings, including download errors and
   accessibility labels, are translated.
-- **About screen** with the author (kongdayan / kongdayan), source, releases, issue tracker,
+- **About screen** with the author (@kongdayan), source, releases, issue tracker,
   MIT licence, privacy and disclaimer notes, and a manual update check against GitHub
   Releases.
 - **Adaptive launcher icon** with a monochrome layer for Android 13 themed icons, plus a

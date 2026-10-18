@@ -253,15 +253,14 @@
     <string name="about_title">このアプリについて</string>
     <string name="about_version">バージョン %1$s・ビルド %2$d</string>
     <string name="about_author_section">作者</string>
-    <string name="about_author_name">kongdayan · @kongdayan</string>
-    <string name="about_author_role">個人開発者・上海</string>
+    <string name="about_author_name">@kongdayan</string>
+    <string name="about_author_role">独立開発者</string>
     <string name="about_author_bio">プライバシーを尊重し、オフラインで動く小さなツールを作っています。Magazine Library もその一つです。</string>
     <string name="about_project">プロジェクト</string>
     <string name="about_github_profile">GitHub プロフィール</string>
     <string name="about_source">ソースコード</string>
     <string name="about_releases">リリース</string>
     <string name="about_issues">問題を報告</string>
-    <string name="about_email">メール</string>
     <string name="about_license">MIT ライセンス</string>
     <string name="about_wristbeam">別のプロジェクト・WristBeam</string>
     <string name="about_languages">言語</string>
@@ -278,7 +277,7 @@
     <string name="about_update_failed">更新を確認できませんでした。しばらくしてから再試行してください。</string>
     <string name="about_open_release">リリースを開く</string>
     <string name="about_build">ビルド %1$s・%2$s</string>
-    <string name="about_made_by">制作：kongdayan</string>
+    <string name="about_made_by">制作：@kongdayan</string>
     <string name="about_contribute">GitHub でのコントリビュートや翻訳を歓迎します。</string>
 
     <!-- 言語名（各言語で表示） -->

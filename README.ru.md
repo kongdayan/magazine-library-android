@@ -41,7 +41,6 @@
   <img src="docs/images/detail.jpg" width="250" alt="Подробности журнала и ссылки на PDF" />
   <img src="docs/images/settings.jpg" width="250" alt="Настройки" />
   <br />
-  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 
@@ -131,13 +130,13 @@ python3 scripts/check-translations.py
 
 ## Автор
 
-**@kongdayan · @kongdayan** — независимый разработчик из Шанхая.
+**kongdayan** — независимый разработчик.
 
 Я делаю небольшие инструменты, которые уважают приватность и работают офлайн. Magazine Library —
 один из них; [WristBeam](https://github.com/kongdayan/wristbeam) (腕映) — нативный компаньон для
 часов Garmin на macOS.
 
-[GitHub](https://github.com/kongdayan) · [Почта](mailto:19552144+kongdayan@users.noreply.github.com) ·
+[GitHub](https://github.com/kongdayan) ·
 [Обратная связь](https://github.com/kongdayan/magazine-library-android/issues)
 
 ## Отказ от ответственности

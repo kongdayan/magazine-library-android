@@ -42,7 +42,6 @@ with saved progress. No account, no ads, no analytics, no cloud.
   <img src="docs/images/detail.jpg" width="250" alt="Magazine details and PDF links" />
   <img src="docs/images/settings.jpg" width="250" alt="Settings" />
   <br />
-  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 
@@ -130,13 +129,13 @@ English source. New languages are welcome — see [contributing](CONTRIBUTING.md
 
 ## Author
 
-**kongdayan · @kongdayan** — independent developer in Shanghai.
+**kongdayan** — independent developer.
 
 I build small tools that respect privacy and work offline. Magazine Library is one of them;
 [WristBeam](https://github.com/kongdayan/wristbeam) (腕映) is a native macOS companion for Garmin
 watches.
 
-[GitHub](https://github.com/kongdayan) · [Email](mailto:19552144+kongdayan@users.noreply.github.com) ·
+[GitHub](https://github.com/kongdayan) ·
 [Issues](https://github.com/kongdayan/magazine-library-android/issues)
 
 ## Disclaimer

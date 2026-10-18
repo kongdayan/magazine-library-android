@@ -3,7 +3,7 @@ plugins { id 'com.android.application' }
 // Version -------------------------------------------------------------------------------------
 // CI passes -PversionName from the release tag. The version code is derived from it so that
 // 1.4.0 -> 10400 and every published build stays installable over the previous one.
-def configuredVersion = (project.findProperty('versionName') ?: '1.4.1').toString()
+def configuredVersion = (project.findProperty('versionName') ?: '1.4.2').toString()
 def versionParts = configuredVersion.tokenize('.').collect { it.replaceAll(/[^0-9].*/, '') }
 def configuredCode = (project.findProperty('versionCode') ?: (
         versionParts[0].toInteger() * 10000

@@ -3,6 +3,13 @@
 This page records what has actually been checked and what remains unverified. The project
 publishes APKs for sideloading; it does not claim store-level certification.
 
+## 1.4.2
+
+- Privacy cleanup: the About screen, READMEs and security policy use only the GitHub account
+  `@kongdayan`; no personal name or email remains. String counts are 298 English and 293 per
+  locale after removing the email label. Unit tests, lint, translation validation and the
+  signed release build pass in CI.
+
 ## 1.4.1
 
 - Fixes the update checker JSON parsing bug found in 1.4.0; `/releases/latest` was confirmed to
@@ -19,7 +26,7 @@ Checked locally with JDK 17, Android SDK 36 and Build Tools 35.0.0:
 - `:app:lintDebug` — zero errors and zero warnings with the project lint configuration.
 - `:app:assembleRelease` — four signed APKs (universal, `arm64-v8a`, `armeabi-v7a`,
   `x86_64`); `apksigner verify` confirms the community certificate.
-- `python3 scripts/check-translations.py` — 299 English strings and 294 translated strings per
+- `python3 scripts/check-translations.py` — 298 English strings and 293 translated strings per
   locale, with matching keys and placeholders for English, Simplified Chinese, Japanese,
   Korean and Russian.
 - `aapt2 dump badging` — package `com.magazinelibrary.app`, version 1.4.0 (10400), minSdk 29,
