@@ -42,6 +42,7 @@ with saved progress. No account, no ads, no analytics, no cloud.
   <img src="docs/images/detail.jpg" width="250" alt="Magazine details and PDF links" />
   <img src="docs/images/settings.jpg" width="250" alt="Settings" />
   <br />
+  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 

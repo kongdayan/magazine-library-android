@@ -30,6 +30,7 @@
   <img src="docs/images/detail.jpg" width="250" alt="잡지 상세 정보와 PDF 링크" />
   <img src="docs/images/settings.jpg" width="250" alt="설정" />
   <br />
+  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 

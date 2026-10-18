@@ -30,6 +30,7 @@
   <img src="docs/images/detail.jpg" width="250" alt="杂志详情与 PDF 链接" />
   <img src="docs/images/settings.jpg" width="250" alt="设置" />
   <br />
+  <img src="docs/images/about.jpg" width="250" alt="About and author" />
   <img src="docs/images/language.jpg" width="250" alt="Language picker" />
 </div>
 
